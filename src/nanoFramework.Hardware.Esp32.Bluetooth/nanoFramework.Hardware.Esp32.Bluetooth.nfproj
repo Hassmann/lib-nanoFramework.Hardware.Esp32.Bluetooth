@@ -21,8 +21,9 @@
   </PropertyGroup>
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
-    <Compile Include="BluetoothLE.cs" />
-    <Compile Include="BluetoothLESettings.cs" />
+    <Compile Include="BTLEService.cs" />
+    <Compile Include="BTLEServiceSettings.cs" />
+    <Compile Include="Natives.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

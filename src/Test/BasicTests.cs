@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using nanoFramework.Hardware.Esp32.Bluetooth;
 
 namespace Test
 {
@@ -7,8 +8,9 @@ namespace Test
     public class BasicTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void Service_Initialized()
         {
+            var service = BTLEService.Start();
         }
     }
 }

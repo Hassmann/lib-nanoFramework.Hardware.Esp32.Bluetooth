@@ -49,13 +49,14 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\BluetoothLE.cs">
-      <Link>Source\BluetoothLE.cs</Link>
+    <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\BTLEService.cs">
+      <Link>Source\BTLEService.cs</Link>
     </Compile>
-    <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\BluetoothLESettings.cs">
-      <Link>Source\BluetoothLESettings.cs</Link>
+    <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\BTLEServiceSettings.cs">
+      <Link>Source\BTLEServiceSettings.cs</Link>
     </Compile>
     <Compile Include="BasicTests.cs" />
+    <Compile Include="NativeMocks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

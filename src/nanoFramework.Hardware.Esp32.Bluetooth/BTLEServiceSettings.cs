@@ -3,7 +3,7 @@ using System.Text;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth
 {
-    class BluetoothLESettings
+    public class BTLEServiceSettings
     {
     }
 }
