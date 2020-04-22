@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth
 {
-    partial class BTLEService
+    partial class BluetoothHost
     {
         private static void NativeCheckInterop(string text)
         {

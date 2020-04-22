@@ -12,7 +12,7 @@
 #include <nanoCLR_Interop.h>
 #include <nanoCLR_Runtime.h>
 
-struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BTLEService
+struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHost
 {
     NANOCLR_NATIVE_DECLARE(NativeCheckInterop___STATIC__VOID__STRING);
 
