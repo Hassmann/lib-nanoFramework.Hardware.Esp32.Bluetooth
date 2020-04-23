@@ -6,7 +6,6 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
     {
         public GattServiceAttribute(string uuid)
         {
-
         }
     }
 
@@ -14,13 +13,10 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
     {
         public GattCharacteristicAttribute(SigCharacteristic characteristic)
         {
-
         }
 
         public GattCharacteristicAttribute(string uuid)
         {
-
         }
     }
-
 }

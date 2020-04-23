@@ -12,7 +12,18 @@ static const CLR_RT_MethodHandler method_lookup[] =
 {
     NULL,
     NULL,
+    NULL,
+    NULL,
     Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHost::NativeCheckInterop___STATIC__VOID__STRING,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
     NULL,
     NULL,
 };
@@ -20,7 +31,7 @@ static const CLR_RT_MethodHandler method_lookup[] =
 const CLR_RT_NativeAssemblyData g_CLR_AssemblyNative_nanoFramework_Hardware_Esp32_Bluetooth =
 {
     "nanoFramework.Hardware.Esp32.Bluetooth",
-    0x5CEC90E3,
+    0x2C17C82F,
     method_lookup,
     { 1, 0, 0, 0 }
 };

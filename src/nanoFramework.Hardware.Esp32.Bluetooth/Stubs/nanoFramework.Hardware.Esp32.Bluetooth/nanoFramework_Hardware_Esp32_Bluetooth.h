@@ -20,6 +20,16 @@ struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp
 
 };
 
+struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHostConfiguration
+{
+    static const int FIELD__<DeviceName>k__BackingField = 1;
+    static const int FIELD__<Mode>k__BackingField = 2;
+    static const int FIELD__<MaxTransferUnit>k__BackingField = 3;
+
+    //--//
+
+};
+
 extern const CLR_RT_NativeAssemblyData g_CLR_AssemblyNative_nanoFramework_Hardware_Esp32_Bluetooth;
 
 #endif  //_NANOFRAMEWORK_HARDWARE_ESP32_BLUETOOTH_H_
