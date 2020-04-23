@@ -2,7 +2,25 @@
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 {
-    internal class GattProfileAttribute : Attribute
+    public class GattServiceAttribute : Attribute
     {
+        public GattServiceAttribute(string uuid)
+        {
+
+        }
     }
+
+    public class GattCharacteristicAttribute : Attribute
+    {
+        public GattCharacteristicAttribute(SigCharacteristic characteristic)
+        {
+
+        }
+
+        public GattCharacteristicAttribute(string uuid)
+        {
+
+        }
+    }
+
 }
