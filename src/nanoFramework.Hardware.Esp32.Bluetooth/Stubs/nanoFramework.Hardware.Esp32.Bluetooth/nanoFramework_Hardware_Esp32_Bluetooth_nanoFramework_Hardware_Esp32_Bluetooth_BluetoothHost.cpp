@@ -11,24 +11,22 @@
 //-----------------------------------------------------------------------------
 
 #include "nanoFramework_Hardware_Esp32_Bluetooth.h"
-#include "nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHost.h"
-
-using namespace nanoFramework_Hardware_Esp32_Bluetooth::nanoFramework_Hardware_Esp32_Bluetooth;
 
 
-void BluetoothHost::NativeCheckInterop( const char* param0, HRESULT &hr )
+HRESULT Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHost::NativeCheckInterop___STATIC__VOID__STRING( CLR_RT_StackFrame& stack )
 {
+    NANOCLR_HEADER();
 
-    (void)param0;
-    (void)hr;
+    NANOCLR_SET_AND_LEAVE(stack.NotImplementedStub());
 
+    NANOCLR_NOCLEANUP();
+}
 
-    ////////////////////////////////
-    // implementation starts here //    
+HRESULT Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHost::NativeInitializeDevice___STATIC__VOID__STRING__nanoFrameworkHardwareEsp32BluetoothBluetoothMode__I4( CLR_RT_StackFrame& stack )
+{
+    NANOCLR_HEADER();
 
+    NANOCLR_SET_AND_LEAVE(stack.NotImplementedStub());
 
-    // implementation ends here   //    
-    ////////////////////////////////
-
-
+    NANOCLR_NOCLEANUP();
 }

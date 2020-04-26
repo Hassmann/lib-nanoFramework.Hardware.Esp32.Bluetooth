@@ -11,6 +11,11 @@
 
 using namespace nanoFramework_Hardware_Esp32_Bluetooth::nanoFramework_Hardware_Esp32_Bluetooth;
 
+typedef struct _esp_some_struct
+{
+    int number;
+    bool flag;
+} esp_some_struct;
 
 HRESULT Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHost::NativeCheckInterop___STATIC__VOID__STRING( CLR_RT_StackFrame& stack )
 {

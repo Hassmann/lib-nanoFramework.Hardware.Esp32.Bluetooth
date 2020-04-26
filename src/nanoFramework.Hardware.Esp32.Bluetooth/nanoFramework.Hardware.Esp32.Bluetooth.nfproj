@@ -15,6 +15,7 @@
     <RootNamespace>nanoFramework.Hardware.Esp32.Bluetooth</RootNamespace>
     <AssemblyName>nanoFramework.Hardware.Esp32.Bluetooth</AssemblyName>
     <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
+    <NF_IsCoreLibrary>True</NF_IsCoreLibrary>
   </PropertyGroup>
   <PropertyGroup Label="nanoFramework">
     <NFMDP_GENERATE_STUBS>true</NFMDP_GENERATE_STUBS>
@@ -25,13 +26,14 @@
     <Compile Include="BluetoothHost.cs" />
     <Compile Include="Gatt\GattService.cs" />
     <Compile Include="Gatt\GattAttributes.cs" />
+    <Compile Include="Gatt\GattTable.cs" />
     <Compile Include="Gatt\Specifications.cs" />
     <Compile Include="Natives.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="mscorlib, Version=1.3.0.3, Culture=neutral, PublicKeyToken=c07d481e9758c731">
-      <HintPath>..\packages\nanoFramework.CoreLibrary.1.3.0\lib\mscorlib.dll</HintPath>
+    <Reference Include="mscorlib, Version=1.7.2.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.CoreLibrary.1.7.2-preview.4\lib\mscorlib.dll</HintPath>
       <Private>True</Private>
       <SpecificVersion>True</SpecificVersion>
     </Reference>

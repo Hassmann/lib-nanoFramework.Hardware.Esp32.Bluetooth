@@ -1,4 +1,6 @@
-﻿namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
+﻿using System;
+
+namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 {
     public enum SigCharacteristic
     {
@@ -236,5 +238,133 @@
         WeightMeasurement = 0x2A9D,
         WeightScaleFeature = 0x2A9E,
         WindChill = 0x2A79,
+    }
+
+    public enum SigService
+    {
+        GenericAccess = 0x1800,
+        AlertNotificationService = 0x1811,
+        AutomationIO = 0x1815,
+        BatteryService = 0x180F,
+        BinarySensor = 0x183B,
+        BloodPressure = 0x1810,
+        BodyComposition = 0x181B,
+        BondManagementService = 0x181E,
+        ContinuousGlucoseMonitoring = 0x181F,
+        CurrentTimeService = 0x1805,
+        CyclingPower = 0x1818,
+        CyclingSpeedandCadence = 0x1816,
+        DeviceInformation = 0x180A,
+        EmergencyConfiguration = 0x183C,
+        EnvironmentalSensing = 0x181A,
+        FitnessMachine = 0x1826,
+        GenericAttribute = 0x1801,
+        Glucose = 0x1808,
+        HealthThermometer = 0x1809,
+        HeartRate = 0x180D,
+        HTTPProxy = 0x1823,
+        HumanInterfaceDevice = 0x1812,
+        ImmediateAlert = 0x1802,
+        IndoorPositioning = 0x1821,
+        InsulinDelivery = 0x183A,
+        InternetProtocolSupportService = 0x1820,
+        LinkLoss = 0x1803,
+        LocationandNavigation = 0x1819,
+        MeshProvisioningService = 0x1827,
+        MeshProxyService = 0x1828,
+        NextDSTChangeService = 0x1807,
+        ObjectTransferService = 0x1825,
+        PhoneAlertStatusService = 0x180E,
+        PulseOximeterService = 0x1822,
+        ReconnectionConfiguration = 0x1829,
+        ReferenceTimeUpdateService = 0x1806,
+        RunningSpeedandCadence = 0x1814,
+        ScanParameters = 0x1813,
+        TransportDiscovery = 0x1824,
+        TxPower = 0x1804,
+        UserData = 0x181C,
+        WeightScale = 0x181D,
+    }
+
+    public enum SigAttributeType
+    {
+        PrimaryService = 0x2800,
+        SecondaryService = 0x2801,
+        Include = 0x2802,
+        CharacteristicDeclaration = 0x2803,
+    }
+
+    [Flags]
+    public enum SigAttributeProperties
+    {
+        Broadcast = 0x01,
+        Read = 0x02,
+        WriteWithoutResponse = 0x04,
+        Notify = 0x10,
+        Indicate = 0x20,
+        AuthenticatedSignedWrites = 0x40,
+        ExtendedProperties = 0x80,
+    }
+
+    public enum SigDeviceAppearance
+    {
+        Unknown = 0,
+        GenericPhone = 64,
+        GenericComputer = 128,
+        GenericWatch = 192,
+        SportsWatch = 193,
+        GenericClock = 256,
+        GenericDisplay = 320,
+        GenericRemoteControl = 384,
+        GenericEyeGlasses = 448,
+        GenericTag = 512,
+        GenericKeyring = 576,
+        GenericMediaPlayer = 640,
+        GenericBarcodeScanner = 704,
+        GenericThermometer = 768,
+        ThermometerEar = 769,
+        GenericHeartrateSensor = 832,
+        HeartRateBelt = 833,
+        GenericBloodPressure = 896,
+        BloodPressureArm = 897,
+        BloodPressureWrist = 898,
+        HumanInterfaceDevice = 960,
+        Keyboard = 961,
+        Mouse = 962,
+        Joystick = 963,
+        Gamepad = 964,
+        DigitizerTablet = 965,
+        CardReader = 966,
+        DigitalPen = 967,
+        BarcodeScanner = 968,
+        GenericGlucoseMeter = 1024,
+        GenericRunningWalkingSensor = 1088,
+        RunningWalkingSensorInShoe = 1089,
+        RunningWalkingSensorOnShoe = 1090,
+        RunningWalkingSensorOnHip = 1091,
+        GenericCycling = 1152,
+        CyclingComputer = 1153,
+        CyclingSpeedSensor = 1154,
+        CyclingCadenceSensor = 1155,
+        CyclingPowerSensor = 1156,
+        CyclingSpeedandCadenceSensor = 1157,
+        GenericPulseOximeter = 3136,
+        PulseOximeterFingertip = 3137,
+        PulseOximeterWristWorn = 3138,
+        GenericWeightScale = 3200,
+        GenericPersonalMobilityDevice = 3264,
+        PoweredWheelchair = 3265,
+        MobilityScooter = 3266,
+        GenericContinuousGlucoseMonitor = 3328,
+        GenericInsulinPump = 3392,
+        InsulinPumpDurable = 3393,
+        InsulinPumpPatch = 3396,
+        InsulinPen = 3400,
+        GenericMedicationDelivery = 3456,
+        GenericOutdoorSportsActivity = 5184,
+        LocationDisplayDevice = 5185,
+        LocationandNavigationDisplayDevice = 5186,
+        LocationPod = 5187,
+        LocationandNavigationPod = 5188,
     }
 }
