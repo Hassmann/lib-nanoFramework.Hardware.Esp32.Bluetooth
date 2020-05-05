@@ -21,7 +21,8 @@ struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp
 {
     static const int FIELD__<DeviceName>k__BackingField = 1;
     static const int FIELD__<Mode>k__BackingField = 2;
-    static const int FIELD__<MaxTransferUnit>k__BackingField = 3;
+    static const int FIELD__<Appearance>k__BackingField = 3;
+    static const int FIELD__<MaxTransferUnit>k__BackingField = 4;
 
     //--//
 
@@ -42,6 +43,34 @@ struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp
 
 };
 
+struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_AttributeRow
+{
+    static const int FIELD__<AutoRespond>k__BackingField = 1;
+    static const int FIELD__<UUID>k__BackingField = 2;
+    static const int FIELD__<Permissions>k__BackingField = 3;
+    static const int FIELD__<MaxLength>k__BackingField = 4;
+    static const int FIELD__<Value>k__BackingField = 5;
+
+    //--//
+
+};
+
+struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_GattID
+{
+    static const int FIELD__<Bytes>k__BackingField = 1;
+
+    //--//
+
+};
+
+struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_GattService
+{
+    static const int FIELD__<UUID>k__BackingField = 1;
+
+    //--//
+
+};
+
 struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_GattTable__Row
 {
     static const int FIELD__<Handle>k__BackingField = 1;
@@ -55,11 +84,11 @@ struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp
 
 struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_GattTable
 {
-    static const int FIELD__name = 1;
-    static const int FIELD__services = 2;
-    static const int FIELD__entries = 3;
-    static const int FIELD__nextHandle = 4;
-    static const int FIELD__configuration = 5;
+    static const int FIELD__services = 1;
+    static const int FIELD__rows = 2;
+    static const int FIELD__nextHandle = 3;
+    static const int FIELD__configuration = 4;
+    static const int FIELD__<NumRows>k__BackingField = 5;
 
     //--//
 

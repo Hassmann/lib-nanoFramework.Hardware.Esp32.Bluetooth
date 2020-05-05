@@ -1,24 +1,23 @@
-﻿using System;
-using System.Diagnostics;
-using System.Runtime.CompilerServices;
+﻿using System.Diagnostics;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth
 {
-    partial class BluetoothHost
+    internal class SimulatedDevice
     {
-        private static void NativeCheckInterop(string text)
+        public static SimulatedDevice Current { get; private set; }
+
+        public static SimulatedDevice Reset() => Current = new SimulatedDevice();
+
+        public string DeviceName { get; private set; }
+        public BluetoothMode Mode { get; private set; }
+        public int MaxTransferUnit { get; private set; }
+
+        internal void NativeInitializeDevice(string deviceName, BluetoothMode mode, int maxTransferUnit)
         {
-            Trace.WriteLine(@"/* Initialize NVS. */
+            DeviceName = deviceName;
+            Mode = mode;
+            MaxTransferUnit = maxTransferUnit;
 
-
-    ??? esp_ble_gatts_app_register(ESP_APP_ID);
-
-");
-        }
-
-
-        private static void NativeInitializeDevice(string deviceName, BluetoothMode mode, int maxTransferUnit)
-        {
             Trace.WriteLine(@"/* Initialize NVS. */
     nvs_flash_init();
 
@@ -42,10 +41,18 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
         }
 
 
+        #region Table
 
-        private static void TraceNative([CallerMemberName]string method = "")
-        {
-            Trace.WriteLine($"Native call: {method}");
-        }
+
+
+        #endregion
+    }
+
+    partial class BluetoothHost
+    {
+        private static SimulatedDevice Target => SimulatedDevice.Current;
+
+        private static void NativeInitializeDevice(string deviceName, BluetoothMode mode, int maxTransferUnit)
+            => Target.NativeInitializeDevice(deviceName, mode, maxTransferUnit);
     }
 }

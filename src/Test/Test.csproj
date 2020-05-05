@@ -58,6 +58,9 @@
     <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\Gatt\GattAttributes.cs">
       <Link>Source\GattAttributes.cs</Link>
     </Compile>
+    <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\Gatt\GattPrimitives.cs">
+      <Link>Source\GattPrimitives.cs</Link>
+    </Compile>
     <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\Gatt\GattService.cs">
       <Link>Source\GattService.cs</Link>
     </Compile>

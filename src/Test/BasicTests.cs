@@ -5,31 +5,31 @@ using nanoFramework.Hardware.Esp32.Bluetooth.Gatt;
 
 namespace Test
 {
-    [GattService("E6B4E8D6-00F2-44EE-B78D-4CF4330922BE")]
-    class TestService : GattService
-    {
-        [GattCharacteristic(SigCharacteristic.CurrentTime)]
-        public DateTime Time { get; }
-
-        [GattCharacteristic("EAD840EE-4F73-4AC7-ACCA-13F8229D08D7")]
-        public string Text { get; set; }
-    }
-
 
     [TestClass]
     public class BasicTests
     {
+        SimulatedDevice device;
         const string deviceName = "Test Device";
 
         BluetoothHost host;
-        TestService service;
+        GattService service;
 
         [TestInitialize]
         public void BeforeEach()
         {
-            host = BluetoothHost.Initialize(new BluetoothHostConfiguration(deviceName));
+            device = SimulatedDevice.Reset();
 
-            service = new TestService();
+            host = BluetoothHost.Initialize(new BluetoothHostConfiguration(deviceName));
+            service = CreateTestService();
+        }
+
+        private GattService CreateTestService()
+        {
+            return new GattService("E6B4E8D6-00F2-44EE-B78D-4CF4330922BE",
+                new TimeCharacteristic("Time", SigCharacteristic.CurrentTime, SigAttributeProperties.Read),
+                new TextCharacteristic("Text", "EAD840EE-4F73-4AC7-ACCA-13F8229D08D7", SigAttributeProperties.Read | SigAttributeProperties.WriteWithoutResponse)
+                );
         }
 
         [TestCleanup]

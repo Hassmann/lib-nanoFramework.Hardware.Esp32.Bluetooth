@@ -2,21 +2,25 @@
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 {
-    public class GattServiceAttribute : Attribute
+    public abstract class GattCharacteristic
     {
-        public GattServiceAttribute(string uuid)
+        public GattCharacteristic(string name, GattID uuid, SigAttributeProperties properties)
         {
         }
     }
 
-    public class GattCharacteristicAttribute : Attribute
+    public class TimeCharacteristic : GattCharacteristic
     {
-        public GattCharacteristicAttribute(SigCharacteristic characteristic)
-        {
-        }
-
-        public GattCharacteristicAttribute(string uuid)
+        public TimeCharacteristic(string name, GattID uuid, SigAttributeProperties properties) : base(name, uuid, properties)
         {
         }
     }
+
+    public class TextCharacteristic : GattCharacteristic
+    {
+        public TextCharacteristic(string name, GattID uuid, SigAttributeProperties properties) : base(name, uuid, properties)
+        {
+        }
+    }
+
 }

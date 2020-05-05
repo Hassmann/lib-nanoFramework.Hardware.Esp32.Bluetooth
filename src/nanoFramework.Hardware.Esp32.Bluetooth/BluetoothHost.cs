@@ -84,6 +84,8 @@
         private void BuildTable()
         {
             var table = new GattTable(configuration, services);
+
+
         }
     }
 }

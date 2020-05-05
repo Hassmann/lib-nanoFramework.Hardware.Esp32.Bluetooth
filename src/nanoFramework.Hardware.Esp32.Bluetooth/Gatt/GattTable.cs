@@ -3,36 +3,71 @@ using System.Collections;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 {
+    class AttributeRow
+    {
+        public bool AutoRespond { get; set; } = true;
+
+        public byte[] UUID { get; set; }
+
+        public int Permissions { get; set; }
+        public int MaxLength { get; set; }
+
+        public byte[] Value { get; set; }
+    }
+
     internal class GattTable
     {
         private ArrayList services;
-        private ArrayList entries = new ArrayList();
+        private ArrayList rows = new ArrayList();
         private ushort nextHandle = 1;
         BluetoothHostConfiguration configuration;
+
+        public int NumRows { get; private set; }
 
         public GattTable(BluetoothHostConfiguration configuration, ArrayList services)
         {
             this.configuration = configuration;
             this.services = services;
 
-            ushort handle;
-            // GAP
-            AddServiceRow(SigService.GenericAccess);
-            AddCharacteristicRows(
-                SigCharacteristic.DeviceName,
-                SigAttributeProperties.Read,
-                configuration.DeviceName);
-            AddCharacteristicRows(
-                SigCharacteristic.Appearance,
-                SigAttributeProperties.Read,
-                (ushort)configuration.Appearance);
-
-            // GATT
-
-            entries.Add(new Row
+            foreach (GattService service in services)
             {
-            });
+                //// Service
+                //var serviceAttribute = GetServiceAttribute(service);
+
+                //rows.Add(new AttributeRow
+                //{
+                //    UUID = BitConverter.GetBytes((ushort)SigAttributeType.PrimaryService),
+                //    MaxLength = 16,
+                //    Value = serviceAttribute.UUID,
+                //});
+
+                //// Characteristics
+                //foreach (GattCharacteristicAttribute characteristicAttribute in GetCharacteristicAttributes(service))
+                //{
+
+                //}
+                
+
+            }
+
+
         }
+
+        private IEnumerable GetCharacteristicAttributes(GattService service)
+        {
+            var methods = service.GetType().GetMethods();
+
+            foreach (var property in service.GetType().GetMethods())
+            {
+
+            }
+
+            return null;
+
+        }
+
+        byte[] GetUShortBytes(int value) => BitConverter.GetBytes((ushort)value);
+
 
         private void AddCharacteristicRows(SigCharacteristic characteristic, SigAttributeProperties properties, string value)
         {
@@ -59,7 +94,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
             row.Handle = handle;
 
-            entries.Add(row);
+            rows.Add(row);
 
             return handle;
         }

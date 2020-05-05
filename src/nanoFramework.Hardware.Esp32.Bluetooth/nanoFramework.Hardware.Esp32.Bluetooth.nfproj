@@ -24,6 +24,7 @@
   <ItemGroup>
     <Compile Include="BluetoothEnums.cs" />
     <Compile Include="BluetoothHost.cs" />
+    <Compile Include="Gatt\GattPrimitives.cs" />
     <Compile Include="Gatt\GattService.cs" />
     <Compile Include="Gatt\GattAttributes.cs" />
     <Compile Include="Gatt\GattTable.cs" />
