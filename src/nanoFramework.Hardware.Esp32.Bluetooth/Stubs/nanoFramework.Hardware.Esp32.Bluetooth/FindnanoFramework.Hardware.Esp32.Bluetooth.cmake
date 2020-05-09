@@ -31,6 +31,8 @@ set(nanoFramework.Hardware.Esp32.Bluetooth_SRCS
     nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_GattTable__Row.cpp
     nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_TextCharacteristic.cpp
     nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_TimeCharacteristic.cpp
+    nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_OS.cpp
+    nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_OS__Size.cpp
 
 )
 

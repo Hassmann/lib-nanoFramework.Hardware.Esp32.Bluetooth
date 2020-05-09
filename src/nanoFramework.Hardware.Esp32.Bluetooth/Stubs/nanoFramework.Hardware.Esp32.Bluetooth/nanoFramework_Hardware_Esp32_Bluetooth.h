@@ -36,7 +36,7 @@ struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp
     static const int FIELD__services = 2;
     static const int FIELD__configuration = 3;
 
-    NANOCLR_NATIVE_DECLARE(NativeCheckInterop___STATIC__VOID__STRING);
+    NANOCLR_NATIVE_DECLARE(NativePrepareGatt___STATIC__VOID__I4__I4);
     NANOCLR_NATIVE_DECLARE(NativeInitializeDevice___STATIC__VOID__STRING__nanoFrameworkHardwareEsp32BluetoothBluetoothMode__I4);
 
     //--//
@@ -109,6 +109,7 @@ struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp
 struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_TextCharacteristic
 {
     static const int FIELD__value = 5;
+    static const int FIELD__<MaxLength>k__BackingField = 6;
 
     //--//
 

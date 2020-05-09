@@ -9,6 +9,9 @@ namespace Test
     public class BasicTests
     {
         private const string deviceName = "Test Device";
+
+        private const int MaxStringLength = 10;
+
         private SimulatedDevice device;
         private BluetoothHost host;
         private GattService service;
@@ -34,7 +37,7 @@ namespace Test
         {
             return new GattService("E6B4E8D6-00F2-44EE-B78D-4CF4330922BE",
                 new TimeCharacteristic("Time", SigCharacteristic.CurrentTime, SigAttributeProperties.Read),
-                new TextCharacteristic("Text", "EAD840EE-4F73-4AC7-ACCA-13F8229D08D7", SigAttributeProperties.Read | SigAttributeProperties.WriteWithoutResponse)
+                new TextCharacteristic("Text", "EAD840EE-4F73-4AC7-ACCA-13F8229D08D7", SigAttributeProperties.Read | SigAttributeProperties.WriteWithoutResponse, MaxStringLength)
                 );
         }
 

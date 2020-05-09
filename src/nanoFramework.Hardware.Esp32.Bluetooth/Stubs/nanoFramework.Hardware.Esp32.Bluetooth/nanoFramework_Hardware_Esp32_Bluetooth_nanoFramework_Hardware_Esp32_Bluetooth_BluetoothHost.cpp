@@ -13,7 +13,7 @@
 #include "nanoFramework_Hardware_Esp32_Bluetooth.h"
 
 
-HRESULT Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHost::NativeCheckInterop___STATIC__VOID__STRING( CLR_RT_StackFrame& stack )
+HRESULT Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_BluetoothHost::NativePrepareGatt___STATIC__VOID__I4__I4( CLR_RT_StackFrame& stack )
 {
     NANOCLR_HEADER();
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 {
@@ -32,5 +33,63 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
         public GattCharacteristic this[int index] 
             => Characteristics[index];
+
+        public int EntryCount
+        {
+            get
+            {
+                int count = 1; // Service
+
+                foreach (GattCharacteristic characteristic in Characteristics)
+                {
+                    count += characteristic.EntryCount;
+                }
+
+                return count;
+            }
+        }
+
+        public int MaxDataSize
+        { 
+            get
+            {
+                int maxSize = 0;
+
+                foreach (GattCharacteristic characteristic in Characteristics)
+                {
+                    maxSize += characteristic.MaxDataSize;
+                }
+
+                return maxSize;
+            }
+        }
+
+        public OS.GattEntry ServiceEntry
+            => new OS.GattEntry
+            {
+                AutoRespond = true,
+            };
+
+        public OS.GattEntry[] Entries
+        {
+            get
+            {
+                var entries = new OS.GattEntry[EntryCount];
+
+                int index = 0;
+
+                entries[index++] = ServiceEntry;
+
+                foreach (GattCharacteristic characteristic in Characteristics)
+                {
+                    foreach (OS.GattEntry entry in characteristic.Entries)
+                    {
+                        entries[index++] = entry;
+                    }
+                }
+
+                return entries;
+            }
+        }
     }
 }
