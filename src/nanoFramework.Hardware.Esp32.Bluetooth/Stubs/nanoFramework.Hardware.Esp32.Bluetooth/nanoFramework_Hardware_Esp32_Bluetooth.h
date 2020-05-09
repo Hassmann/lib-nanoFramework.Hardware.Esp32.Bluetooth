@@ -63,9 +63,21 @@ struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp
 
 };
 
+struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_GattCharacteristic
+{
+    static const int FIELD__ValueChanged = 1;
+    static const int FIELD__<Name>k__BackingField = 2;
+    static const int FIELD__<UUID>k__BackingField = 3;
+    static const int FIELD__<Properties>k__BackingField = 4;
+
+    //--//
+
+};
+
 struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_GattService
 {
     static const int FIELD__<UUID>k__BackingField = 1;
+    static const int FIELD__<Characteristics>k__BackingField = 2;
 
     //--//
 
@@ -89,6 +101,14 @@ struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp
     static const int FIELD__nextHandle = 3;
     static const int FIELD__configuration = 4;
     static const int FIELD__<NumRows>k__BackingField = 5;
+
+    //--//
+
+};
+
+struct Library_nanoFramework_Hardware_Esp32_Bluetooth_nanoFramework_Hardware_Esp32_Bluetooth_Gatt_TextCharacteristic
+{
+    static const int FIELD__value = 5;
 
     //--//
 

@@ -62,12 +62,29 @@ static const CLR_RT_MethodHandler method_lookup[] =
     NULL,
     NULL,
     NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    NULL,
 };
 
 const CLR_RT_NativeAssemblyData g_CLR_AssemblyNative_nanoFramework_Hardware_Esp32_Bluetooth =
 {
     "nanoFramework.Hardware.Esp32.Bluetooth",
-    0xB4105C5D,
+    0xB3962347,
     method_lookup,
     { 1, 0, 0, 0 }
 };

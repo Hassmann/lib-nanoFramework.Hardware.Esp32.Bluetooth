@@ -55,8 +55,8 @@
     <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\BluetoothHost.cs">
       <Link>Source\BluetoothHost.cs</Link>
     </Compile>
-    <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\Gatt\GattAttributes.cs">
-      <Link>Source\GattAttributes.cs</Link>
+    <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\Gatt\GattCharacteristic.cs">
+      <Link>Source\GattCharacteristic.cs</Link>
     </Compile>
     <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\Gatt\GattPrimitives.cs">
       <Link>Source\GattPrimitives.cs</Link>
@@ -71,8 +71,10 @@
       <Link>Source\Specifications.cs</Link>
     </Compile>
     <Compile Include="BasicTests.cs" />
+    <Compile Include="Implementation.cs" />
     <Compile Include="NativeMocks.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SimulatedDevice.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

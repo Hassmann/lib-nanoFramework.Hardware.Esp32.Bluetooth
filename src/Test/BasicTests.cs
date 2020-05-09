@@ -1,19 +1,19 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using nanoFramework.Hardware.Esp32.Bluetooth;
 using nanoFramework.Hardware.Esp32.Bluetooth.Gatt;
+using System.Diagnostics;
 
 namespace Test
 {
-
     [TestClass]
     public class BasicTests
     {
-        SimulatedDevice device;
-        const string deviceName = "Test Device";
+        private const string deviceName = "Test Device";
+        private SimulatedDevice device;
+        private BluetoothHost host;
+        private GattService service;
 
-        BluetoothHost host;
-        GattService service;
+        #region Initialization
 
         [TestInitialize]
         public void BeforeEach()
@@ -22,6 +22,12 @@ namespace Test
 
             host = BluetoothHost.Initialize(new BluetoothHostConfiguration(deviceName));
             service = CreateTestService();
+            host.AddService(service);
+        }
+
+        [TestCleanup]
+        public void AfterEach()
+        {
         }
 
         private GattService CreateTestService()
@@ -32,23 +38,46 @@ namespace Test
                 );
         }
 
-        [TestCleanup]
-        public void AfterEach()
-        {
-        }
+        #endregion Initialization
 
         [TestMethod]
         public void Service_Initialized()
         {
+            var timeCharacteristic = service["Time"];
+            Assert.IsNotNull(timeCharacteristic);
+            Assert.AreSame(timeCharacteristic, service[0]);
+
+            var textCharacteristic = service["Text"];
+            Assert.IsNotNull(textCharacteristic);
+            Assert.AreSame(textCharacteristic, service[1]);
         }
 
         [TestMethod]
         public void Service_Started()
         {
-            host.AddService(service);
             host.Advertise();
         }
 
+
+        [TestMethod]
+        public void Service_Notify()
+        {
+            var textCharacteristic = service["Text"] as TextCharacteristic;
+
+            bool gotNotified = false;
+
+            textCharacteristic.ValueChanged += (uuid) =>
+            {
+                gotNotified = true;
+            };
+
+            host.Advertise();
+
+            BluetoothHost.Target.TestSetString(textCharacteristic, "Test");
+
+            Assert.IsTrue(gotNotified);
+            Assert.AreEqual("Test", textCharacteristic.Value);
+        }
 
     }
 }

@@ -3,6 +3,7 @@
     using Gatt;
     using System;
     using System.Collections;
+    using System.Diagnostics;
 
     public class BluetoothHostConfiguration
     {
@@ -48,7 +49,7 @@
             }
             else
             {
-                throw new NotImplementedException("Reinitialization not implemented yet");
+                // Bluetooth reinitialization is not supported yet
             }
 
             return new BluetoothHost(configuration);

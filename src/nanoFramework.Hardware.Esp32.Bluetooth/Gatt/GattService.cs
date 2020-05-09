@@ -6,21 +6,31 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
     {
         public GattID UUID { get; private set; }
 
+        public GattCharacteristic[] Characteristics { get; private set; }
+
         public GattService(GattID uuid, params GattCharacteristic[] characteristics)
         {
             UUID = uuid;
+            Characteristics = characteristics ?? new GattCharacteristic[0];
         }
 
-        public GattService AddCharacteristic(string name, Type type, SigCharacteristic sigCharacteristic, SigAttributeProperties properties)
+        public GattCharacteristic this[string name]
         {
+            get
+            {
+                foreach (var characteristic in Characteristics)
+                {
+                    if (characteristic.Name == name)
+                    {
+                        return characteristic;
+                    }
+                }
 
-            return this;
+                throw new IndexOutOfRangeException();
+            }
         }
 
-        public GattService AddCharacteristic(string name, Type type, string uuid, SigAttributeProperties properties)
-        {
-
-            return this;
-        }
+        public GattCharacteristic this[int index] 
+            => Characteristics[index];
     }
 }
