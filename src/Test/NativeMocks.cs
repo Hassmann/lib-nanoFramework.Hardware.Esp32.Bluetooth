@@ -14,5 +14,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
         private static void NativePrepareGatt(int numEntries, int totalBytes)
             => Target.NativePrepareGatt(numEntries, totalBytes);
 
+        private static void NativeAddEntry(int index, byte[] uuid, bool autoRespond, int maxLength, int permissions, byte[] value)
+            => Target.NativeAddEntry(index, uuid, autoRespond, maxLength, permissions, value);
+
     }
 }

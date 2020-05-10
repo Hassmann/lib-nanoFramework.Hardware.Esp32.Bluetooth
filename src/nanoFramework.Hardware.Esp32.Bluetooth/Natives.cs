@@ -11,6 +11,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
         [MethodImpl(MethodImplOptions.InternalCall)]
         private static extern void NativeInitializeDevice(string deviceName, BluetoothMode mode, int maxTransferUnit);
 
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private static extern void NativeAddEntry(int index, byte[] uuid, bool autoRespond, int maxLength, int permissions, byte[] value);
 
     }
 }

@@ -27,7 +27,6 @@
     <Compile Include="Gatt\GattPrimitives.cs" />
     <Compile Include="Gatt\GattService.cs" />
     <Compile Include="Gatt\GattCharacteristic.cs" />
-    <Compile Include="Gatt\GattTable.cs" />
     <Compile Include="Gatt\Specifications.cs" />
     <Compile Include="Natives.cs" />
     <Compile Include="OS.cs" />

@@ -25,6 +25,18 @@ namespace Test
             memory = new byte[totalBytes];
         }
 
+        internal void NativeAddEntry(int index, byte[] uuid, bool autoRespond, int maxLength, int permissions, byte[] value)
+        {
+            attributes[index] = new OS.GattEntry
+            {
+                AutoRespond = autoRespond,
+                MaxLength = maxLength,
+                Permissions = (SigAttributeProperties) permissions,
+                UUID = uuid,
+                Value = value,
+            };
+        }
+
         #endregion
 
     }

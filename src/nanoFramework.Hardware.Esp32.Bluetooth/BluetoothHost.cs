@@ -97,13 +97,17 @@
 			NativePrepareGatt(numEntries, totalBytes);
 
 			// Send entries and values
+
+			int index = 0;
+
 			foreach (GattService service in services)
 			{
-				//foreach (GattEntry entry in service.Entries)
-				//{
-				//    NativeAddEntry(entry.)
-				//}
+				foreach (OS.GattEntry entry in service.Entries)
+				{
+					NativeAddEntry(index++, entry.UUID.Bytes, entry.AutoRespond, entry.MaxLength, (int)entry.Permissions, entry.Value);
+				}
 			}
 		}
+
 	}
 }

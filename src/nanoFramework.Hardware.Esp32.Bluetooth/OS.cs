@@ -6,7 +6,7 @@
     {
         public static class Size
         {
-            public const int Time = 4;
+            public const int Time = 8;
             public const int Character = 2;
         }
 
