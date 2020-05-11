@@ -23,6 +23,8 @@
   <Import Project="$(NanoFrameworkProjectSystemPath)NFProjectSystem.props" Condition="Exists('$(NanoFrameworkProjectSystemPath)NFProjectSystem.props')" />
   <ItemGroup>
     <Compile Include="BluetoothEnums.cs" />
+    <Compile Include="BluetoothEvent.cs" />
+    <Compile Include="BluetoothEventProcessor.cs" />
     <Compile Include="BluetoothHost.cs" />
     <Compile Include="Gatt\GattPrimitives.cs" />
     <Compile Include="Gatt\GattService.cs" />
@@ -35,6 +37,11 @@
   <ItemGroup>
     <Reference Include="mscorlib, Version=1.7.2.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
       <HintPath>..\packages\nanoFramework.CoreLibrary.1.7.2-preview.7\lib\mscorlib.dll</HintPath>
+      <Private>True</Private>
+      <SpecificVersion>True</SpecificVersion>
+    </Reference>
+    <Reference Include="nanoFramework.Runtime.Events, Version=1.4.2.0, Culture=neutral, PublicKeyToken=c07d481e9758c731">
+      <HintPath>..\packages\nanoFramework.Runtime.Events.1.4.2-preview.7\lib\nanoFramework.Runtime.Events.dll</HintPath>
       <Private>True</Private>
       <SpecificVersion>True</SpecificVersion>
     </Reference>

@@ -9,10 +9,17 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
         public GattCharacteristic[] Characteristics { get; private set; }
 
+        public int Index { get; set; }
+
         public GattService(GattID uuid, params GattCharacteristic[] characteristics)
         {
             UUID = uuid;
             Characteristics = characteristics ?? new GattCharacteristic[0];
+
+            for (int i = 0; i < Characteristics.Length; i++)
+            {
+                Characteristics[i].Index = i;
+            }
         }
 
         public GattCharacteristic this[string name]

@@ -44,6 +44,12 @@ namespace Test
         #endregion Initialization
 
         [TestMethod]
+        public void Host_Initialized()
+        {
+            Assert.AreEqual(deviceName, device.DeviceName);
+        }
+
+        [TestMethod]
         public void Service_Initialized()
         {
             var timeCharacteristic = service["Time"];
@@ -59,6 +65,8 @@ namespace Test
         public void Service_Started()
         {
             host.Advertise();
+
+            
         }
 
 
@@ -76,7 +84,7 @@ namespace Test
 
             host.Advertise();
 
-            BluetoothHost.Target.TestSetString(textCharacteristic, "Test");
+            BluetoothHost.Target.TestSetString(service, textCharacteristic, "Test");
 
             Assert.IsTrue(gotNotified);
             Assert.AreEqual("Test", textCharacteristic.Value);

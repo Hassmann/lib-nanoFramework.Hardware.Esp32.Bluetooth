@@ -1,8 +1,11 @@
-﻿namespace nanoFramework.Hardware.Esp32.Bluetooth
+﻿using nanoFramework.Runtime.Events;
+using System;
+using System.Collections;
+
+
+namespace nanoFramework.Hardware.Esp32.Bluetooth
 {
 	using Gatt;
-	using System;
-	using System.Collections;
 
 	public class BluetoothHostConfiguration
 	{
@@ -18,7 +21,7 @@
 		public int MaxTransferUnit { get; set; } = 500;
 	}
 
-	public partial class BluetoothHost
+	public partial class BluetoothHost : IEventListener
 	{
 		private static bool isDeviceInitialized;
 
@@ -56,6 +59,46 @@
 
 		#endregion Initialization
 
+		#region Event system
+
+		void IEventListener.InitializeForEventSource()
+		{
+
+		}
+
+		bool IEventListener.OnEvent(BaseEvent e)
+		{
+			if (e is BluetoothEvent be)
+			{
+				OnEvent(be);
+				return true;
+			}
+
+			return false;
+		}
+
+		private void OnEvent(BluetoothEvent e)
+		{
+			var service = (GattService)services[e.ServiceIndex];
+			var characteristic = service[e.CharacteristicIndex];
+
+			switch (e.EventType)
+			{
+				case BluetoothEventType.ValueWritten:
+					var value = NativeGetValue(e.ServiceIndex, e.CharacteristicIndex);
+
+					characteristic.UpdateValue(value);
+
+					break;
+				default:
+					break;
+			}
+		}
+
+
+
+		#endregion
+
 		public void AddService(GattService service)
 		{
 			if (isLocked)
@@ -84,17 +127,26 @@
 
 		private void BuildTable()
 		{
+			// Pass 1 - Requirements and Indices
 			int numEntries = 0;
 			int totalBytes = 0;
 
+			int serviceIndex = 0;
+
 			foreach (GattService service in services)
 			{
+				service.Index = serviceIndex++;
+
+				foreach (GattCharacteristic characteristic in service.Characteristics)
+				{
+
+				}
 				numEntries += service.EntryCount;
 				totalBytes += service.MaxDataSize;
 			}
 
 			// Prepare device
-			NativePrepareGatt(numEntries, totalBytes);
+			NativePrepareGatt(services.Count, numEntries, totalBytes);
 
 			// Send entries and values
 

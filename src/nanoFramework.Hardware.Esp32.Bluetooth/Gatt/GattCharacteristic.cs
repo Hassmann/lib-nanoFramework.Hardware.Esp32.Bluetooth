@@ -23,6 +23,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
         public abstract int MaxDataSize { get; }
         public abstract byte[] Data { get; }
 
+        public int Index { get; set; }
+
         public virtual int EntryCount => 2;
 
         public virtual OS.GattEntry[] Entries => new OS.GattEntry[]
@@ -39,6 +41,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
         protected void SignalChange()
             => ValueChanged?.Invoke(UUID);
+
+        internal abstract void UpdateValue(byte[] value);
     }
 
     public class TimeCharacteristic : GattCharacteristic
@@ -60,6 +64,13 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
         public override byte[] Data
             => BitConverter.GetBytes(value.Ticks);
+
+        internal override void UpdateValue(byte[] value)
+        {
+            var ticks = BitConverter.ToInt64(value, 0);
+
+            this.value = new DateTime(ticks);
+        }
     }
 
     public class TextCharacteristic : GattCharacteristic
@@ -82,7 +93,13 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
         public override int MaxDataSize
             => MaxLength * OS.Size.Character;
+        
         public override byte[] Data
-            => UTF8Encoding.UTF8.GetBytes(value);
+            => OS.Encode(value);
+
+        internal override void UpdateValue(byte[] value)
+        {
+            this.value = OS.Decode(value);
+        }
     }
 }
