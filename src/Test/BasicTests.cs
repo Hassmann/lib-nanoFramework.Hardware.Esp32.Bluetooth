@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using nanoFramework.Hardware.Esp32.Bluetooth;
 using nanoFramework.Hardware.Esp32.Bluetooth.Gatt;
+using System.CodeDom;
 using System.Diagnostics;
 
 namespace Test
@@ -9,6 +10,9 @@ namespace Test
     public class BasicTests
     {
         private const string deviceName = "Test Device";
+
+        const string serviceUUID = "E6B4E8D6-00F2-44EE-B78D-4CF4330922BE";
+        const string textUUID = "EAD840EE-4F73-4AC7-ACCA-13F8229D08D7";
 
         private const int MaxStringLength = 10;
 
@@ -23,9 +27,9 @@ namespace Test
         {
             device = SimulatedDevice.Reset();
 
-            host = BluetoothHost.Initialize(new BluetoothHostConfiguration(deviceName));
             service = CreateTestService();
-            host.AddService(service);
+
+            host = BluetoothHost.Initialize(new BluetoothHostConfiguration(deviceName), service);
         }
 
         [TestCleanup]
@@ -34,12 +38,17 @@ namespace Test
         }
 
         private GattService CreateTestService()
-        {
-            return new GattService("E6B4E8D6-00F2-44EE-B78D-4CF4330922BE",
-                new TimeCharacteristic("Time", SigCharacteristic.CurrentTime, SigAttributeProperties.Read),
-                new TextCharacteristic("Text", "EAD840EE-4F73-4AC7-ACCA-13F8229D08D7", SigAttributeProperties.Read | SigAttributeProperties.WriteWithoutResponse, MaxStringLength)
+            => new GattService(serviceUUID,
+                new TimeCharacteristic(
+                    "Time", 
+                    SigCharacteristic.CurrentTime, 
+                    SigAttributeProperties.Read),
+                new TextCharacteristic(
+                    "Text", 
+                    textUUID, 
+                    SigAttributeProperties.Read | SigAttributeProperties.WriteWithoutResponse, 
+                    MaxStringLength)
                 );
-        }
 
         #endregion Initialization
 

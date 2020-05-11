@@ -73,35 +73,17 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
         public bool IsPrimary { get; set; } = true;
 
-        internal OS.GattEntry ServiceEntry
-            => new OS.GattEntry
-            {
-                AutoRespond = true,
-                UUID = IsPrimary ? SigAttributeType.PrimaryService : SigAttributeType.SecondaryService,
-                Permissions = SigAttributeProperties.Read,
-                MaxLength = 2, //
+        internal OS.GattEntry[] ServiceEntries
+            => new OS.GattEntry[]
+            { 
+                new OS.GattEntry
+                {
+                    AutoRespond = true,
+                    UUID = IsPrimary ? SigAttributeType.PrimaryService : SigAttributeType.SecondaryService,
+                    Permissions = SigAttributeProperties.Read,
+                    MaxLength = 2, //
+                }
             };
 
-        internal OS.GattEntry[] Entries
-        {
-            get
-            {
-                var entries = new OS.GattEntry[EntryCount];
-
-                int index = 0;
-
-                entries[index++] = ServiceEntry;
-
-                foreach (GattCharacteristic characteristic in Characteristics)
-                {
-                    foreach (OS.GattEntry entry in characteristic.Entries)
-                    {
-                        entries[index++] = entry;
-                    }
-                }
-
-                return entries;
-            }
-        }
     }
 }

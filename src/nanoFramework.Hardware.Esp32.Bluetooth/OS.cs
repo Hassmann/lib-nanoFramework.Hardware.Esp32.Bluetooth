@@ -12,7 +12,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 		internal const EventCategory BluetoothEventCategory = EventCategory.Custom; // TODO Dedicated category
 
-		internal struct GattEntry
+		internal class GattEntry
 		{
 			internal bool AutoRespond;
 			internal GattID UUID;

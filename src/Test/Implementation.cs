@@ -5,33 +5,33 @@ namespace Test
 {
     using ESPIDF;
 
-    struct ServiceInfo
+    class ServiceInfo
     {
-        public int Index;
-        public int CharacteristicCount;
+        public int EntryIndex;
+
+        public CharacteristicInfo[] characteristics;
     }
 
-    struct CharacteristicInfo
+    class CharacteristicInfo
     {
-        public int Index;
+        public int EntryIndex;
         public int EntryCount;
 
-        public int ValueIndex
-            => Index + 1;
+        public int ValueEntryIndex
+            => EntryIndex + 1;
     }
 
     partial class SimulatedDevice
     {
         ServiceInfo[] services;
-        CharacteristicInfo[] characteristics;
 
-        OS.GattEntry[] attributes;
+        OS.GattEntry[] entries;
         ushort[] interfaces;
 
         byte[] memory;
 
         #region Natives declared
-        
+
         internal void NativeInitializeDevice(string deviceName, BluetoothMode mode, int maxTransferUnit)
         {
             DeviceName = deviceName;
@@ -39,18 +39,44 @@ namespace Test
             MaxTransferUnit = maxTransferUnit;
         }
 
-        internal void NativePrepareGatt(int numServices, int numEntries, int totalBytes)
+        internal void NativePrepareGatt(int[] characteristicCount, int numEntries, int totalBytes, int maxValueSize)
         {
-            interfaces = new ushort[numServices];
-            attributes = new OS.GattEntry[numEntries];
-            services = new ServiceInfo[numServices];
+            interfaces = new ushort[characteristicCount.Length];
+            entries = new OS.GattEntry[numEntries];
+
+            services = new ServiceInfo[characteristicCount.Length];
+
+            for (int i = 0; i < services.Length; i++)
+            {
+                var numCharacteristics = characteristicCount[i];
+
+                services[i] = new ServiceInfo
+                {
+                    characteristics = new CharacteristicInfo[numCharacteristics]
+                };
+            }
 
             memory = new byte[totalBytes];
         }
 
+        internal void NativeBeginService(int serviceIndex, int entryIndex)
+        {
+            services[serviceIndex].EntryIndex = entryIndex;
+        }
+
+        internal void NativeBeginCharacteristic(int serviceIndex, int characteristicIndex, int entryIndex)
+        {
+            services[serviceIndex].characteristics[characteristicIndex] = new CharacteristicInfo
+            {
+                EntryIndex = entryIndex
+            };
+        }
+
+
+
         internal void NativeAddEntry(int index, byte[] uuid, bool autoRespond, int maxLength, int permissions, byte[] value)
         {
-            attributes[index] = new OS.GattEntry
+            entries[index] = new OS.GattEntry
             {
                 AutoRespond = autoRespond,
                 MaxLength = maxLength,
@@ -94,13 +120,13 @@ namespace Test
         #endregion
 
         CharacteristicInfo GetCharacteristic(int serviceIndex, int characteristicIndex)
-            => characteristics[services[serviceIndex].Index + characteristicIndex];
+            => services[serviceIndex].characteristics[characteristicIndex];
 
         OS.GattEntry GetValueEntry(int serviceIndex, int characteristicIndex)
         {
             var info = GetCharacteristic(serviceIndex, characteristicIndex);
 
-            return attributes[info.ValueIndex];
+            return entries[info.ValueEntryIndex];
         }
 
     }

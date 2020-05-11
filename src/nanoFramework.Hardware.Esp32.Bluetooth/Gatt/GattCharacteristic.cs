@@ -3,7 +3,7 @@ using System.Text;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 {
-    public delegate void ToSignalCharacteristicChange(GattID uuid);
+    public delegate void ToSignalCharacteristicChange(GattCharacteristic characteristic);
 
     public abstract class GattCharacteristic
     {
@@ -32,17 +32,25 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
             new OS.GattEntry
             {
                 AutoRespond = true,
-                UUID = UUID,
+                UUID = SigAttributeType.CharacteristicDeclaration,
                 MaxLength = UUID.Bytes.Length,
+                Permissions = SigAttributeProperties.Read,
+                Value = UUID.Bytes,
+            },
+            new OS.GattEntry
+            {
+                AutoRespond = true,
+                UUID = UUID,
+                MaxLength = MaxDataSize,
                 Permissions = Properties,
                 Value = Data,
             },
         };
 
-        protected void SignalChange()
-            => ValueChanged?.Invoke(UUID);
-
         internal abstract void UpdateValue(byte[] value);
+
+        internal void FireValueChange()
+            => ValueChanged?.Invoke(this);
     }
 
     public class TimeCharacteristic : GattCharacteristic
