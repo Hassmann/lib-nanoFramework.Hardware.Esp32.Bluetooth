@@ -26,6 +26,7 @@
     <Compile Include="BluetoothEvent.cs" />
     <Compile Include="BluetoothEventProcessor.cs" />
     <Compile Include="BluetoothHost.cs" />
+    <Compile Include="BluetoothHostConfiguration.cs" />
     <Compile Include="Gatt\GattPrimitives.cs" />
     <Compile Include="Gatt\GattService.cs" />
     <Compile Include="Gatt\GattCharacteristic.cs" />

@@ -27,7 +27,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
         public virtual int EntryCount => 2;
 
-        public virtual OS.GattEntry[] Entries => new OS.GattEntry[]
+        internal virtual OS.GattEntry[] Entries => new OS.GattEntry[]
         {
             new OS.GattEntry
             {

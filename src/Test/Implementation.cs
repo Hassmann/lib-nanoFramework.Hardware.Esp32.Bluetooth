@@ -93,10 +93,12 @@ namespace Test
 
         #endregion
 
+        CharacteristicInfo GetCharacteristic(int serviceIndex, int characteristicIndex)
+            => characteristics[services[serviceIndex].Index + characteristicIndex];
 
         OS.GattEntry GetValueEntry(int serviceIndex, int characteristicIndex)
         {
-            var info = characteristics[services[serviceIndex].Index + characteristicIndex];
+            var info = GetCharacteristic(serviceIndex, characteristicIndex);
 
             return attributes[info.ValueIndex];
         }

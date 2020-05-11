@@ -1,28 +1,30 @@
 ﻿using System.Text;
+using nanoFramework.Runtime.Events;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth
 {
 	using Gatt;
-	using System;
 
-	public static class OS
+	internal static class OS
 	{
-		public static byte[] Encode(string value)
+		internal static byte[] Encode(string value)
 			=> value != null ? Encoding.UTF8.GetBytes(value) : null;
 
-		public struct GattEntry
+		internal const EventCategory BluetoothEventCategory = EventCategory.Custom; // TODO Dedicated category
+
+		internal struct GattEntry
 		{
-			public bool AutoRespond;
-			public GattID UUID;
-			public SigAttributeProperties Permissions;
-			public int MaxLength;
-			public byte[] Value;
+			internal bool AutoRespond;
+			internal GattID UUID;
+			internal SigAttributeProperties Permissions;
+			internal int MaxLength;
+			internal byte[] Value;
 		}
 
-		public static class Size
+		internal static class Size
 		{
-			public const int Time = 8;
-			public const int Character = 2;
+			internal const int Time = 8;
+			internal const int Character = 2;
 		}
 
 		internal static string Decode(byte[] value)

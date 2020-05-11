@@ -73,7 +73,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
 
         public bool IsPrimary { get; set; } = true;
 
-        public OS.GattEntry ServiceEntry
+        internal OS.GattEntry ServiceEntry
             => new OS.GattEntry
             {
                 AutoRespond = true,
@@ -82,7 +82,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
                 MaxLength = 2, //
             };
 
-        public OS.GattEntry[] Entries
+        internal OS.GattEntry[] Entries
         {
             get
             {

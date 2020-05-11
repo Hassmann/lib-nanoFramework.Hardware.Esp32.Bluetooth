@@ -16,7 +16,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 		{
 			instance = new BluetoothEventProcessor();
 
-			EventSink.AddEventProcessor(EventCategory.Custom, instance);
+			EventSink.AddEventProcessor(OS.BluetoothEventCategory, instance);
 		}
 	}
 }
