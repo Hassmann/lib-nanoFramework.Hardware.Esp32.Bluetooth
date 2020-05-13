@@ -21,7 +21,10 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
         private static extern void NativeBeginService(int serviceIndex, int entryIndex);
 
         [MethodImpl(MethodImplOptions.InternalCall)]
-        private static extern void NativeBeginCharacteristic(int serviceIndex, int characteristicIndex, int entryIndex);
+        private static extern void NativeBeginCharacteristic(int serviceIndex, int characteristicIndex, int entryIndex, int entryCount);
+
+        [MethodImpl(MethodImplOptions.InternalCall)]
+        private static extern void NativeAdvertise(byte[] data, int mode, int filter);
 
     }
 }

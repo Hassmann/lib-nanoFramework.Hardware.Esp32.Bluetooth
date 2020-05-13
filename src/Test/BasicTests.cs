@@ -19,6 +19,7 @@ namespace Test
         private SimulatedDevice device;
         private BluetoothHost host;
         private GattService service;
+        private Advertisement advertisement;
 
         #region Initialization
 
@@ -30,6 +31,10 @@ namespace Test
             service = CreateTestService();
 
             host = BluetoothHost.Initialize(new BluetoothHostConfiguration(deviceName), service);
+
+            advertisement = new Advertisement(
+                    new Advertisement.DataFragment(SigAdvertisingDataType.CompleteListof128bitServiceClassUUIDs, service.UUID.Bytes)
+                );
         }
 
         [TestCleanup]
@@ -73,7 +78,7 @@ namespace Test
         [TestMethod]
         public void Service_Started()
         {
-            host.Advertise();
+            host.Advertise(advertisement);
 
             
         }
@@ -91,7 +96,7 @@ namespace Test
                 gotNotified = true;
             };
 
-            host.Advertise();
+            host.Advertise(advertisement);
 
             BluetoothHost.Target.TestSetString(service, textCharacteristic, "Test");
 

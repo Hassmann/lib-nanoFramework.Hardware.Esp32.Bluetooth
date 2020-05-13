@@ -64,11 +64,12 @@ namespace Test
             services[serviceIndex].EntryIndex = entryIndex;
         }
 
-        internal void NativeBeginCharacteristic(int serviceIndex, int characteristicIndex, int entryIndex)
+        internal void NativeBeginCharacteristic(int serviceIndex, int characteristicIndex, int entryIndex, int entryCount)
         {
             services[serviceIndex].characteristics[characteristicIndex] = new CharacteristicInfo
             {
-                EntryIndex = entryIndex
+                EntryIndex = entryIndex,
+                EntryCount = entryCount,
             };
         }
 
@@ -91,6 +92,11 @@ namespace Test
             var entry = GetValueEntry(serviceIndex, characteristicIndex);
 
             return entry.Value;
+        }
+
+        internal void NativeAdvertise(byte[] data, int mode, int filter)
+        {
+
         }
 
         #endregion

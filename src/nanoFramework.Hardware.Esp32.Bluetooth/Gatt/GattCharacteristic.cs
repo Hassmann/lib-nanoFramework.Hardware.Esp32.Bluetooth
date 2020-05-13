@@ -23,7 +23,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
         public abstract int MaxDataSize { get; }
         public abstract byte[] Data { get; }
 
-        public int Index { get; set; }
+        public int Index { get; internal set; }
+        public int ServiceIndex { get; internal set; }
 
         public virtual int EntryCount => 2;
 
@@ -66,7 +67,11 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
         public DateTime Value
         {
             get => value;
-            set { this.value = value; }
+            set 
+            { 
+                this.value = value; 
+                
+            }
         }
 
 

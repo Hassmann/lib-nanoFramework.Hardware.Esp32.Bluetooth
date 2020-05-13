@@ -64,6 +64,9 @@
     <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\BluetoothHostConfiguration.cs">
       <Link>Source\BluetoothHostConfiguration.cs</Link>
     </Compile>
+    <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\Gatt\Advertisement.cs">
+      <Link>Source\Advertisement.cs</Link>
+    </Compile>
     <Compile Include="..\nanoFramework.Hardware.Esp32.Bluetooth\Gatt\GattCharacteristic.cs">
       <Link>Source\GattCharacteristic.cs</Link>
     </Compile>

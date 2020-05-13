@@ -81,7 +81,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth.Gatt
                     AutoRespond = true,
                     UUID = IsPrimary ? SigAttributeType.PrimaryService : SigAttributeType.SecondaryService,
                     Permissions = SigAttributeProperties.Read,
-                    MaxLength = 2, //
+                    MaxLength = UUID.Bytes.Length, //
+                    Value = UUID.Bytes,
                 }
             };
 

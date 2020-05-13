@@ -21,7 +21,10 @@
 		private static void NativeBeginService(int serviceIndex, int entryIndex)
 			=> Target.NativeBeginService(serviceIndex, entryIndex);
 
-		private static void NativeBeginCharacteristic(int serviceIndex, int characteristicIndex, int entryIndex)
-			=> Target.NativeBeginCharacteristic(serviceIndex, characteristicIndex, entryIndex);
+		private static void NativeBeginCharacteristic(int serviceIndex, int characteristicIndex, int entryIndex, int entryCount)
+			=> Target.NativeBeginCharacteristic(serviceIndex, characteristicIndex, entryIndex, entryCount);
+
+		private static void NativeAdvertise(byte[] data, int mode, int filter)
+			=> Target.NativeAdvertise(data, mode, filter);
 	}
 }

@@ -11,7 +11,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 	{
 		private static bool isDeviceInitialized;
 
-		private bool isLocked;
+		private bool isTableCreated;
 
 		public GattService[] Services { get; private set; }
 
@@ -36,6 +36,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 				foreach (GattCharacteristic characteristic in service.Characteristics)
 				{
+					characteristic.ServiceIndex = service.Index;
 					characteristic.Index = characteristicIndex++;
 				}
 			}
@@ -107,20 +108,17 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 		#endregion
 
-		public void Advertise(bool enable = true)
+		public void Advertise(Advertisement advertisement)
 		{
-			if (!isLocked)
+			if (!isTableCreated)
 			{
 				// First time, set it all up
 				BuildTable();
 
-				isLocked = true;
+				isTableCreated = true;
 			}
-			else
-			{
-				// Just disable, (re-)enable
-				throw new NotImplementedException();
-			}
+
+			NativeAdvertise(advertisement.Data, (int)advertisement.Mode, (int)advertisement.Filter);
 		}
 
 		private void BuildTable()
@@ -179,7 +177,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 				foreach (var characteristic in service.Characteristics)
 				{
-					NativeBeginCharacteristic(service.Index, characteristic.Index, entryIndex);
+					NativeBeginCharacteristic(service.Index, characteristic.Index, entryIndex, characteristic.EntryCount);
 
 					AddEntries(characteristic.Entries);
 				}
