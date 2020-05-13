@@ -8,9 +8,14 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 		static BluetoothEventProcessor instance;
 
 		BaseEvent IEventProcessor.ProcessEvent(uint data1, uint data2, DateTime time)
-		{
-			throw new NotImplementedException();
-		}
+			=> new BluetoothEvent
+			{
+				Time = time,
+				ServiceIndex = (int)(data1 >> 16),
+				CharacteristicIndex = (int)(data1 & 0xFFFF),
+				EventType = (BluetoothEventType)(data2 >> 16),
+				Value = (int)(data2 & 0xFFFF),
+			};
 
 		public static void Initialize()
 		{

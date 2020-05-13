@@ -1,4 +1,5 @@
 ﻿using nanoFramework.Runtime.Events;
+using System;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth
 {
@@ -9,11 +10,12 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 	internal class BluetoothEvent : BaseEvent
 	{
-		public BluetoothEventType EventType { get; set; }
+		public DateTime	Time { get; internal set; }
+		public BluetoothEventType EventType { get; internal set; }
 
-		public int ServiceIndex { get; set; }
-		public int CharacteristicIndex { get; set; }
+		public int ServiceIndex { get; internal set; }
+		public int CharacteristicIndex { get; internal set; }
 		
-		public int Value { get; set; }
+		public int Value { get; internal set; }
 	}
 }

@@ -94,6 +94,13 @@ namespace Test
             return entry.Value;
         }
 
+        internal void NativeSetValue(int serviceIndex, int characteristicIndex, byte[] data)
+        {
+            var entry = GetValueEntry(serviceIndex, characteristicIndex);
+
+            entry.Value = data;
+        }
+
         internal void NativeAdvertise(byte[] data, int mode, int filter)
         {
 

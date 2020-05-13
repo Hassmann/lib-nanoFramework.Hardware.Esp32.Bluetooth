@@ -1,7 +1,4 @@
 ﻿using nanoFramework.Runtime.Events;
-using System;
-using System.Collections;
-
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth
 {
@@ -13,9 +10,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 		private bool isTableCreated;
 
-		public GattService[] Services { get; private set; }
-
 		private BluetoothHostConfiguration configuration;
+		public GattService[] Services { get; private set; }
 
 		#region Initialization
 
@@ -69,7 +65,6 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 		void IEventListener.InitializeForEventSource()
 		{
-
 		}
 
 		bool IEventListener.OnEvent(BaseEvent e)
@@ -99,14 +94,13 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 					characteristic.FireValueChange();
 
 					break;
+
 				default:
 					break;
 			}
 		}
 
-
-
-		#endregion
+		#endregion Event system
 
 		public void Advertise(Advertisement advertisement)
 		{
@@ -151,10 +145,9 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 			// Prepare device
 			NativePrepareGatt(characteristicCount, numEntries, totalBytes, maxValueSize);
 
-			#endregion
+			#endregion Pass 1 - Requirements
 
 			#region Pass 2 - Send entries and values
-
 
 			int entryIndex = 0;
 
@@ -183,8 +176,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 				}
 			}
 
-			#endregion
+			#endregion Pass 2 - Send entries and values
 		}
-
 	}
 }
