@@ -1,5 +1,5 @@
-﻿using System.Text;
-using nanoFramework.Runtime.Events;
+﻿using nanoFramework.Runtime.Events;
+using System.Text;
 
 namespace nanoFramework.Hardware.Esp32.Bluetooth
 {
