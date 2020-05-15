@@ -49,6 +49,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 					configuration.Mode,
 					configuration.MaxTransferUnit);
 
+				BluetoothEventProcessor.Initialize();
+
 				isDeviceInitialized = true;
 			}
 			else
@@ -150,9 +152,13 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 			#region Pass 2 - Send entries and values
 
 			int entryIndex = 0;
+			int totalServiceEntries = 0;
 
 			void AddEntry(OS.GattEntry entry)
-				=> NativeAddEntry(entryIndex++, entry.UUID.Bytes, entry.AutoRespond, entry.MaxLength, (int)entry.Permissions, entry.Value);
+			{
+				NativeAddEntry(entryIndex++, entry.UUID.Bytes, entry.AutoRespond, entry.MaxLength, (int)entry.Permissions, entry.Value);
+				totalServiceEntries++;
+			}
 
 			void AddEntries(OS.GattEntry[] entries)
 			{
@@ -164,6 +170,8 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 			foreach (GattService service in Services)
 			{
+				totalServiceEntries = 0;
+
 				NativeBeginService(service.Index, entryIndex);
 
 				AddEntries(service.ServiceEntries);
@@ -174,7 +182,10 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 					AddEntries(characteristic.Entries);
 				}
+
+				NativeFinalizeService(service.Index, totalServiceEntries);
 			}
+
 
 			#endregion Pass 2 - Send entries and values
 		}

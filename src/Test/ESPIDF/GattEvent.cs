@@ -12,12 +12,13 @@ namespace Test.ESPIDF
 
 	class GattRegistered : GattEvent
 	{
-		public bool Success { get; set; }
+		public bool Success { get; set; } = true;
 		public int AppID { get; set; }
 	}
 
 	class GattWrite : GattEvent
 	{
+		public GattHandle handle { get; set; }
 		public bool NeedsResponse { get; set; }
 		public bool IsPrepare { get; set; }
 		public byte[] Value { get; set; }
@@ -37,6 +38,8 @@ namespace Test.ESPIDF
 
 	class GattTableCreated : GattEvent
 	{
+		public int serviceID;
+		public GattHandle[] handles;
 	}
 
 }

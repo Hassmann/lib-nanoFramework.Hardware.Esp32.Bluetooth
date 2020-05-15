@@ -87,6 +87,7 @@
     <Compile Include="ESPIDF\GattEvent.cs" />
     <Compile Include="ESPIDF\GattHandle.cs" />
     <Compile Include="ESPIDF\GattInterface.cs" />
+    <Compile Include="ESPIDF\NativeStructs.cs" />
     <Compile Include="Implementation.cs" />
     <Compile Include="NanoSim.cs" />
     <Compile Include="NativeMocks.cs" />
