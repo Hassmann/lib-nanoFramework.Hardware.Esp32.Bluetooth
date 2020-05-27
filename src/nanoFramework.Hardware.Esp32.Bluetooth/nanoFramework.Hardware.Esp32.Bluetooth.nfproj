@@ -26,6 +26,36 @@
     <NFMDP_PE_ExcludeClassByName Include="ThisAssembly">
       <InProject>false</InProject>
     </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.Gatt.GattCharacteristic">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.BluetoothEvent">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.BluetoothEventProcessor">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.Gatt.GattID">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.Gatt.GattService">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.BluetoothHostConfiguration">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.OS">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.Gatt.Advertisement">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.Gatt.TextCharacteristic">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
+    <NFMDP_PE_ExcludeClassByName Include="nanoFramework.Hardware.Esp32.Bluetooth.Gatt.TimeCharacteristic">
+      <InProject>false</InProject>
+    </NFMDP_PE_ExcludeClassByName>
   </ItemGroup>
   <ItemGroup>
     <NFMDP_PE_LoadHints Include="..\packages\nanoFramework.CoreLibrary.1.7.2-preview.7\lib\mscorlib.dll">

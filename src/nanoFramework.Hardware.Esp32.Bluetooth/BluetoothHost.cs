@@ -11,7 +11,9 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 		private bool isTableCreated;
 
 		private BluetoothHostConfiguration configuration;
-		public GattService[] Services { get; private set; }
+
+		GattService[] services;
+		public GattService[] Services => services;
 
 		#region Initialization
 
@@ -19,12 +21,12 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 		{
 			this.configuration = configuration;
 
-			Services = services;
+			this.services = services;
 
 			// Create Indices
 			int serviceIndex = 0;
 
-			foreach (GattService service in Services)
+			foreach (GattService service in this.services)
 			{
 				service.Index = serviceIndex++;
 
@@ -82,7 +84,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 
 		private void OnEvent(BluetoothEvent e)
 		{
-			var service = Services[e.ServiceIndex];
+			var service = services[e.ServiceIndex];
 			var characteristic = service[e.CharacteristicIndex];
 
 			switch (e.EventType)
@@ -125,9 +127,9 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 			int totalBytes = 0;
 			int maxValueSize = 0;
 
-			int[] characteristicCount = new int[Services.Length];
+			int[] characteristicCount = new int[services.Length];
 
-			foreach (GattService service in Services)
+			foreach (GattService service in services)
 			{
 				characteristicCount[service.Index] = service.Characteristics.Length;
 
@@ -168,7 +170,7 @@ namespace nanoFramework.Hardware.Esp32.Bluetooth
 				}
 			}
 
-			foreach (GattService service in Services)
+			foreach (GattService service in services)
 			{
 				totalServiceEntries = 0;
 
